@@ -1,0 +1,57 @@
+﻿@model List<Models.ViewModels.StudentVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Student List</h1>
+
+<p>
+    <a asp-action="Create2" class="btn btn-success">Create New Student</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th>
+               @Html.DisplayName("Email")
+            </th>
+            <th>
+                @Html.DisplayName("Roll No")
+            </th>
+            <th>
+                @Html.DisplayName("Date of Birth")
+            </th>
+            <th>
+                @Html.DisplayName("Courses")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RollNo)
+            </td>
+            <td>
+                @item.DateOfBirth.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses)
+            </td>
+           <td>
+                <a asp-action="Edit2" class="btn btn-primary" asp-route-id="@item.Id">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
